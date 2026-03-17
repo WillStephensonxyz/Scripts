@@ -3,8 +3,8 @@
 # to do
 # disable terminal bell
 # configure i3-status
-# configure transparent terminal
 # import programs from kde (kdewallet) or replace
+# test
 
 packages=("i3" "i3status" "dmenu" "picom" "rxvt-unicode" "feh" "xmodmap")
 
@@ -38,9 +38,7 @@ package_list() {
 configure_i3() {
 
 	echo "[*] Configuring i3"
-	if [[ -f "$i3_path" ]]; then
-		echo "i3 config already exists"
-	else
+	if [[ ! -f "$i3_path" ]]; then
 		echo "creating i3 config file"
 		mkdir -p "$i3_dir"
 		curl -o "$i3_path" "$i3_config"
@@ -50,15 +48,11 @@ configure_i3() {
 configure_urxvt() {
 
 	echo "[*] Configuring urxvt"
-	if [[ -f "$xresources_path" ]]; then 
-		echo ".Xresoures already exists"
-	else
+	if [[ ! -f "$xresources_path" ]]; then
 		echo "creating .Xresources"
-		curl -o "$xresources_config" "$xresources_path"
+		curl -o "$xresources_config" "$xresources_path" 
 	fi
 }
-
-echo 
 
 configure_picom() {
 
