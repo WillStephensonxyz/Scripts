@@ -3,18 +3,17 @@
 # to do
 # disable terminal bell
 # configure i3-status
-# configure gaps (add to master config)
 # configure transparent terminal
 # import programs from kde (kdewallet) or replace
 
 packages=("i3" "i3status" "dmenu" "picom" "rxvt-unicode" "feh" "xmodmap")
 
-i3_config_file="https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-kde/config"
-xresources_config="https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-Xresources/.Xresources"
-# picom_config=""
+i3_config="https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-kde/config"
+xresources_config="https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-Xresources/.Xresources"
+picom_config="https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-picom/picom.conf"
 
-config_dir="$HOME/.config/i3"
-config_path="$config_dir/config"
+i3_dir="$HOME/.config/i3"
+i3_path="$HOME/.config/i3/config"
 xresources_path="$HOME/.Xresources"
 picom_dir="$HOME/.config/picom"
 picom_path="$HOME/.config/picom/picom.conf"
@@ -39,12 +38,12 @@ package_list() {
 configure_i3() {
 
 	echo "[*] Configuring i3"
-	if [[ -f "$config_path" ]]; then
+	if [[ -f "$i3_path" ]]; then
 		echo "i3 config already exists"
 	else
 		echo "creating i3 config file"
-		mkdir -p "$config_dir"
-		curl -o "$config_path" "$i3_config_file"
+		mkdir -p "$i3_dir"
+		curl -o "$i3_path" "$i3_config"
 	fi
 }
 
@@ -66,7 +65,8 @@ configure_picom() {
 	echo "[*] Configuring picom"
 	if [[ ! -f "$picom_path" ]]; then
 		mkdir -p "$picom_dir" 
-		# curl -o "
+		curl -o "$picom_path" "$picom_config"
+	fi
 }
 
 configure_xmodmap() {
@@ -94,8 +94,10 @@ main() {
 	package_list
 	configure_i3
 	configure_urxvt
+	configure_picom
 	configure_xmodmap
 	kde_bell
+	
 }
 
 main
