@@ -52,7 +52,7 @@ keybinds() {
 
 # Disable the beep
 rmmod pcspkr
-echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+sudo echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 
 main() {
 	# package_list
