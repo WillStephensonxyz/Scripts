@@ -3,18 +3,9 @@
 # to do
 # configure i3-status
 # import programs from kde (kdewallet) or replace
-# refactor config downloads - turn into a case statement that checks, downloads config & mv to path
-# create preferred optional file structure
 
 packages=("i3" "i3status" "dmenu" "picom" "rxvt-unicode" "feh" "xmodmap")
 
-i3_config="https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-kde/config"
-xresources_config="https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-Xresources/.Xresources"
-picom_config="https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-picom/picom.conf"
-
-i3_path="$HOME/.config/i3/config"
-xresources_path="$HOME/.Xresources"
-picom_path="$HOME/.config/picom/picom.conf"
 kaccessrc="$HOME/.config/kaccessrc"
 xmodmap="$HOME/.Xmodmap"
 
@@ -50,15 +41,19 @@ keybinds() {
 [[ -d "$HOME"/Projects ]] || mkdir "$HOME/Projects"
 [[ -d "$HOME"/Study ]] || mkdir "$HOME/Study"
 
+IFS=, 
+while read -r col1 col2; do
+	echo "$col1" "$col2"
+done < configs.csv
+
 # Disable the beep
-rmmod pcspkr
-sudo echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+# rmmod pcspkr
+# sudo echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 
 main() {
 	# package_list
 	# download config
-	keybinds
-	
+	# keybinds
 }
 
 main
