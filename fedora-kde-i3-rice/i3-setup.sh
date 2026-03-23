@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # to do
+# 
 # configure i3-status
-# import programs from kde (kdewallet) or replace
+# delete native kde wallet program and replace with something else
 
 packages=("i3" "i3status" "dmenu" "picom" "rxvt-unicode" "feh" "xmodmap")
 
@@ -24,7 +25,9 @@ download_config() {
 	local config_file="$HOME$1"
 	local url="$2"
 
-	[[ ! -f "$config_file" ]] && mkdir -p "$(dirname $config_file)" 
+	[[ -f "$config_file" ]] && return 
+
+	mkdir -p "$(dirname $config_file)" 
 	wget "$url" -O "$config_file" 
 }
 
