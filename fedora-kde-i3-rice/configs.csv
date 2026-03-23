@@ -1,3 +1,3 @@
-$HOME/.config/i3/config,https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-kde/config
-$HOME/.Xresources,https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-Xresources/.Xresources
-$HOME/.config/picom/picom.conf,https://github.com/WillStephensonxyz/dotfiles/blob/main/i3-laptop-rice/i3-picom/picom.conf
+/.config/i3/config,https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-kde/config
+/.Xresources,https://raw.githubusercontent.com/WillStephensonxyz/dotfiles/refs/heads/main/i3-laptop-rice/i3-Xresources/.Xresources
+/.config/picom/picom.conf,https://github.com/WillStephensonxyz/dotfiles/blob/main/i3-laptop-rice/i3-picom/picom.conf

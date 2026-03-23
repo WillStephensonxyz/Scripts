@@ -21,11 +21,11 @@ package_list() {
 }
 
 download_config() {
-	local config_file=="$1"
-	local download_url=="$2"
+	local config_file="$HOME$1"
+	local url="$2"
 
 	[[ ! -f "$config_file" ]] && mkdir -p "$(dirname $config_file)" 
-	wget "$download_url" -O "$config_file" 
+	wget "$url" -O "$config_file" 
 }
 
 keybinds() {
@@ -41,9 +41,11 @@ keybinds() {
 [[ -d "$HOME"/Projects ]] || mkdir "$HOME/Projects"
 [[ -d "$HOME"/Study ]] || mkdir "$HOME/Study"
 
+
 IFS=, 
 while read -r col1 col2; do
-	echo "$col1" "$col2"
+	# echo "$HOME$col1" "$col2"
+	download_config "$col1" "$col2"
 done < configs.csv
 
 # Disable the beep
@@ -51,12 +53,12 @@ done < configs.csv
 # sudo echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 
 main() {
-	# package_list
-	# download config
-	# keybinds
+	package_list
+	download config
+	keybinds
 }
 
-main
+# main
 
 # echo "Packages and config files have been installed"
 # echo "Reccomend rebooting the machine to load changes"
